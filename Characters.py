@@ -32,18 +32,23 @@ class Character:
         self.noise = 0
         print('надеюсь, меня не заметят')
 
-    @staticmethod
     def voice_command(self, number):
         comands_list = ['да', 'нет', 'пойдем', 'стой здесь']
         print(comands_list[number])
 
 
 class SWAT(Character):
+    swat_counter = 0
     def __init__(self):
-        super().__init__()
-        self.weapon = 'SWAT'
-        self.defuse_ability = 0
-        print('Я - солдат, я не спал пять лет...')
+        SWAT.swat_counter += 1
+        if SWAT.swat_counter > 5:
+            print('Игроков спецназа слишком много')
+        else:
+            super().__init__()
+            self.weapon = 'SWAT'
+            self.defuse_ability = 0
+            print('Я - солдат, я не спал пять лет...')
+
 
     def defuse(self):
         if self.defuse_ability == 0:
@@ -60,6 +65,5 @@ class Terrorist(Character):
 
     def plant_bomb(self):
         print('Бомба установлена')
-
 
 
